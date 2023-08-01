@@ -503,6 +503,7 @@ class CLAP(nn.Module):
                 nn.Linear(self.joint_embed_shape, self.joint_embed_shape)
             )
         elif text_cfg.model_type == "roberta":
+            RobertaModel._keys_to_ignore_on_load_missing =["position_ids"]
             self.text_branch = RobertaModel.from_pretrained('roberta-base')
             self.text_transform = MLPLayers(units=[self.joint_embed_shape,
                                                    self.joint_embed_shape,
