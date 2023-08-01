@@ -11,6 +11,7 @@ def bert_embeddings(text):
     
 from transformers import RobertaTokenizer, RobertaModel
 
+RobertaModel._keys_to_ignore_on_load_missing =["position_ids"]
 tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
 model = RobertaModel.from_pretrained('roberta-base')
 text = "Replace me by any text you'd like."
